@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartBudget — Student Finance Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ===================== LOGIN PAGE ===================== -->
+<div id="auth-screen">
+  <div class="auth-wrap">
+    <!-- LEFT HERO -->
+    <div class="auth-left">
+      <div class="auth-blob" style="width:300px;height:300px;background:#00f5a0;top:-80px;left:-80px;"></div>
+      <div class="auth-blob" style="width:200px;height:200px;background:#00d9f5;bottom:80px;right:100px;animation-delay:2s;"></div>
+      <div class="auth-blob" style="width:150px;height:150px;background:#7c5cfc;top:50%;left:40%;animation-delay:4s;"></div>
+      <div class="auth-hero">
+        <div class="auth-badge">🎓 Built for Students</div>
+        <h1 class="auth-hero-title">Track Every Rupee.<br/>Save Every Day.</h1>
+        <p class="auth-hero-sub">The smartest way for students to manage scholarships, expenses, and savings — all in one beautiful dashboard.</p>
+        <div class="feature-pills">
+          <div class="fpill"><span class="fpill-dot" style="background:#00f5a0;"></span>Real-time tracking</div>
+          <div class="fpill"><span class="fpill-dot" style="background:#00d9f5;"></span>Smart budget alerts</div>
+          <div class="fpill"><span class="fpill-dot" style="background:#7c5cfc;"></span>Expense analytics</div>
+          <div class="fpill"><span class="fpill-dot" style="background:#ff4d6d;"></span>Savings insights</div>
+        </div>
+        <div class="stats-showcase">
+          <div class="showcase-stat"><span class="ss-val">₹2.4L</span><span class="ss-lbl">Avg Saved/Year</span></div>
+          <div class="showcase-div"></div>
+          <div class="showcase-stat"><span class="ss-val">10K+</span><span class="ss-lbl">Students</span></div>
+          <div class="showcase-div"></div>
+          <div class="showcase-stat"><span class="ss-val">98%</span><span class="ss-lbl">Satisfaction</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="auth-right">
+      <div class="auth-card">
+        <div class="auth-logo-row">
+          <div class="logo-mark">₹</div>
+          <div>
+            <div class="logo-text">Smart<span>Budget</span></div>
+            <div class="logo-sub">for Students</div>
+          </div>
+        </div>
+
+        <!-- ===== LOGIN VIEW ===== -->
+        <div id="login-view">
+          <h2 class="auth-title">Welcome Back! 👋</h2>
+          <p class="auth-sub-text">Sign in to your account to continue</p>
+          <div class="tab-row">
+            <button class="tab-btn active" onclick="switchTab('login')">Login</button>
+            <button class="tab-btn" onclick="switchTab('signup')">Sign Up</button>
+          </div>
+          <div id="login-msg" class="auth-msg"></div>
+          <div class="form-stack">
+            <div class="field">
+              <label class="flbl">Email Address</label>
+              <input class="finp" id="li-email" type="email" placeholder="Enter your email address"/>
+            </div>
+            <div class="field">
+              <label class="flbl">Password</label>
+              <input class="finp" id="li-password" type="password" placeholder="Enter your password"/>
+            </div>
+            <div class="forgot">Forgot Password?</div>
+            <button class="btn-main" onclick="doLogin()">Login to Dashboard →</button>
+            <div class="divider-line">or continue with</div>
+            <button class="google-btn" onclick="googleAuth()">
+              <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              Continue with Google
+            </button>
+          </div>
+        </div>
+
+        <!-- ===== SIGN UP VIEW ===== -->
+        <div id="signup-view" style="display:none;">
+          <h2 class="auth-title">Create Account 🎓</h2>
+          <p class="auth-sub-text">Join thousands of students budgeting smartly</p>
+          <div class="tab-row">
+            <button class="tab-btn" onclick="switchTab('login')">Login</button>
+            <button class="tab-btn active" onclick="switchTab('signup')">Sign Up</button>
+          </div>
+          <div id="signup-msg" class="auth-msg"></div>
+          <div class="form-stack">
+            <div class="field-row">
+              <div class="field"><label class="flbl">First Name</label><input class="finp" id="su-fname" placeholder="Enter your first name"/></div>
+              <div class="field"><label class="flbl">Last Name</label><input class="finp" id="su-lname" placeholder="Enter your last name"/></div>
+            </div>
+            <div class="field"><label class="flbl">College Email</label><input class="finp" id="su-email" type="email" placeholder="Enter your college email"/></div>
+            <div class="field"><label class="flbl">University</label><input class="finp" id="su-university" placeholder="Enter your university name"/></div>
+            <div class="field"><label class="flbl">Password</label><input class="finp" id="su-password" type="password" placeholder="Create a password (min. 8 characters)"/></div>
+            <div class="field"><label class="flbl">Confirm Password</label><input class="finp" id="su-confirm" type="password" placeholder="Confirm your password"/></div>
+            <button class="btn-main" onclick="doSignUp()">Create Account →</button>
+            <div class="divider-line">or</div>
+            <button class="google-btn" onclick="googleAuth()">
+              <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              Sign up with Google
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== APP SHELL ===================== -->
+<div id="app-shell" style="display:none;">
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="tlogo">
+      <div class="tlogo-mark">₹</div>
+      <div>
+        <div class="tlogo-text">Smart<span>Budget</span></div>
+        <div class="tlogo-sub">for Students</div>
+      </div>
+    </div>
+    <div class="top-search">
+      <svg class="search-ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search transactions..."/>
+    </div>
+    <div class="top-right">
+      <div class="notif-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="nbadge">3</span>
+      </div>
+      <div class="user-pill">
+        <div class="uavatar" id="topbar-avatar">R</div>
+        <span class="uname" id="topbar-uname">User</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+  </header>
+
+  <div class="app-body">
+    <!-- SIDEBAR -->
+    <nav class="sidebar">
+      <div class="nav-section">Main</div>
+      <button class="nav-item active" id="nav-dashboard" onclick="navigate('dashboard')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </button>
+      <button class="nav-item" id="nav-add" onclick="navigate('add')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        Add Transaction
+      </button>
+      <button class="nav-item" id="nav-transactions" onclick="navigate('transactions')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        View Transactions
+        <span class="nav-badge">10</span>
+      </button>
+      <div class="nav-section">Finance</div>
+      <button class="nav-item" id="nav-budget" onclick="navigate('budget')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        Set Budget
+      </button>
+      <button class="nav-item" id="nav-reports" onclick="navigate('reports')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Reports
+      </button>
+      <div class="nav-section">Account</div>
+      <button class="nav-item" id="nav-profile" onclick="navigate('profile')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Profile
+      </button>
+      <div class="nav-spacer"></div>
+      <button class="nav-item logout-btn" onclick="logout()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Logout
+      </button>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-area">
+
+      <!-- ======== DASHBOARD ======== -->
+      <div id="page-dashboard" class="page active">
+        <div class="ph">
+          <div><div class="ph-title">Dashboard</div><div class="ph-sub">Track your income, expenses and savings smartly.</div></div>
+          <div class="dpill">📅 April 2024 ▾</div>
+        </div>
+        <div class="stats-grid">
+          <div class="scard green">
+            <div class="scard-top"><div class="scard-ico green">💰</div><span class="scard-chg up">↑ 12%</span></div>
+            <div class="scard-lbl">Total Balance</div><div class="scard-val">₹5,000</div>
+          </div>
+          <div class="scard red">
+            <div class="scard-top"><div class="scard-ico red">🛍️</div><span class="scard-chg dn">↓ 8%</span></div>
+            <div class="scard-lbl">Total Expenses</div><div class="scard-val">₹3,000</div>
+          </div>
+          <div class="scard blue">
+            <div class="scard-top"><div class="scard-ico blue">🐷</div><span class="scard-chg up">↑ 25%</span></div>
+            <div class="scard-lbl">Total Savings</div><div class="scard-val">₹2,000</div>
+          </div>
+          <div class="scard purple">
+            <div class="scard-top"><div class="scard-ico purple">🎯</div><span style="font-size:12px;color:var(--warn);font-weight:700;">50% Used</span></div>
+            <div class="scard-lbl">Monthly Budget</div><div class="scard-val">₹6,000</div>
+            <div class="scard-bar"><div class="scard-fill" style="width:50%;background:linear-gradient(90deg,#7c5cfc,#00d9f5);"></div></div>
+          </div>
+        </div>
+        <div class="two-col">
+          <div class="gcard">
+            <div class="gcard-title">📊 Expenses Breakdown</div>
+            <div class="pie-wrap">
+              <canvas id="pieChart" width="150" height="150"></canvas>
+              <div class="legend">
+                <div class="leg"><span class="ldot" style="background:#00f5a0;"></span><span class="lname">Food &amp; Dining</span><span class="lamt">₹1,200</span><span class="lpct" style="color:#00f5a0;">40%</span></div>
+                <div class="leg"><span class="ldot" style="background:#00d9f5;"></span><span class="lname">Travel</span><span class="lamt">₹600</span><span class="lpct" style="color:#00d9f5;">20%</span></div>
+                <div class="leg"><span class="ldot" style="background:#ffb347;"></span><span class="lname">Shopping</span><span class="lamt">₹450</span><span class="lpct" style="color:#ffb347;">15%</span></div>
+                <div class="leg"><span class="ldot" style="background:#7c5cfc;"></span><span class="lname">Study</span><span class="lamt">₹300</span><span class="lpct" style="color:#7c5cfc;">10%</span></div>
+                <div class="leg"><span class="ldot" style="background:#ff64c8;"></span><span class="lname">Entertainment</span><span class="lamt">₹450</span><span class="lpct" style="color:#ff64c8;">15%</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="gcard">
+            <div class="gcard-title">📈 Monthly Spending Trend</div>
+            <canvas id="lineChart" width="400" height="180"></canvas>
+          </div>
+        </div>
+        <div class="three-col">
+          <div class="gcard">
+            <div class="gcard-hdr"><span class="gcard-title" style="margin:0;">🕒 Recent Transactions</span><button class="view-all-btn" onclick="navigate('transactions')">View All</button></div>
+            <div class="txn-li"><div class="txn-ico in">↓</div><div><div class="txn-name">Scholarship</div><div class="txn-meta">24 Apr • Income</div></div><div class="txn-amt in">+₹5,000</div></div>
+            <div class="txn-li"><div class="txn-ico out">↑</div><div><div class="txn-name">Lunch at Canteen</div><div class="txn-meta">23 Apr • Food</div></div><div class="txn-amt out">-₹120</div></div>
+            <div class="txn-li"><div class="txn-ico out">↑</div><div><div class="txn-name">Bus Pass</div><div class="txn-meta">22 Apr • Travel</div></div><div class="txn-amt out">-₹200</div></div>
+            <div class="txn-li"><div class="txn-ico out">↑</div><div><div class="txn-name">Physics Book</div><div class="txn-meta">21 Apr • Study</div></div><div class="txn-amt out">-₹300</div></div>
+          </div>
+          <div class="gcard">
+            <div class="gcard-title">💼 Budget Progress</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;color:var(--text2);">April Budget</span><span style="font-family:var(--font-head);font-size:18px;font-weight:800;">₹6,000</span></div>
+            <div class="bud-bar"><div class="bud-fill" style="width:50%;"></div></div>
+            <div class="bud-row"><span>₹3,000 spent</span><span>₹3,000 left</span></div>
+            <div class="alert-strip">🔔 50% of budget used — be cautious!</div>
+            <canvas id="miniBar" width="280" height="80" style="margin-top:16px;"></canvas>
+          </div>
+          <div class="gcard">
+            <div class="gcard-title">💡 Smart Tips</div>
+            <div class="tip"><div class="tip-ico" style="background:rgba(255,77,109,0.12);">🍽️</div><div><div class="tip-title">Reduce Food Expenses</div><div class="tip-desc">You spend 40% on food. Try cooking at home more often.</div></div></div>
+            <div class="tip"><div class="tip-ico" style="background:rgba(0,245,160,0.12);">⚡</div><div><div class="tip-title">Great Saving Habit!</div><div class="tip-desc">You saved ₹2,000 this month. Keep it up!</div></div></div>
+            <div class="tip"><div class="tip-ico" style="background:rgba(0,217,245,0.12);">📊</div><div><div class="tip-title">Track Daily Spending</div><div class="tip-desc">Log expenses daily to stay within budget.</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======== ADD TRANSACTION ======== -->
+      <div id="page-add" class="page">
+        <div class="ph"><div><div class="ph-title">Add Transaction</div><div class="ph-sub">Record your income or expense quickly.</div></div></div>
+        <div id="success-toast" class="success-toast">✅ Transaction added successfully! Balance updated.</div>
+        <div class="form-card">
+          <div class="ttype-label">Transaction Type</div>
+          <div class="type-toggle">
+            <button class="ttype exp-active" id="btn-exp" onclick="setTxnType('expense')">📤 Expense</button>
+            <button class="ttype" id="btn-inc" onclick="setTxnType('income')">📥 Income</button>
+          </div>
+          <div class="fgrid">
+            <div class="fg full"><label class="flbl2">Transaction Title</label><input class="finp2" type="text" id="txn-title" placeholder="Enter transaction title"/></div>
+            <div class="fg"><label class="flbl2">Amount (₹)</label><div class="amt-wrap"><span class="curr-sym">₹</span><input class="finp2" type="number" id="txn-amount" placeholder="Enter amount"/></div></div>
+            <div class="fg"><label class="flbl2">Date</label><input class="finp2" type="date" id="txn-date" value="2024-04-24"/></div>
+            <div class="fg"><label class="flbl2">Category</label>
+              <select class="fsel2" id="txn-cat">
+                <option>Food &amp; Dining</option><option>Travel</option><option>Shopping</option>
+                <option>Study Materials</option><option>Entertainment</option>
+                <option>Scholarship</option><option>Part-time Job</option><option>Family</option><option>Other</option>
+              </select>
+            </div>
+            <div class="fg"><label class="flbl2">Payment Method</label>
+              <select class="fsel2">
+                <option>UPI</option><option>Cash</option><option>Debit Card</option><option>Net Banking</option>
+              </select>
+            </div>
+            <div class="fg full"><label class="flbl2">Note (Optional)</label><input class="finp2" type="text" placeholder="Add a short note (optional)"/><div class="fnote">e.g. Split with roommate, college canteen, etc.</div></div>
+            <div class="fg full"><button class="btn-main" onclick="addTransaction()">+ Add Transaction</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======== VIEW TRANSACTIONS ======== -->
+      <div id="page-transactions" class="page">
+        <div class="ph">
+          <div><div class="ph-title">View Transactions</div><div class="ph-sub">All your income and expense records.</div></div>
+          <div class="dpill">📅 April 2024 ▾</div>
+        </div>
+        <div class="sum-strip">
+          <div class="spill income-pill">Income <b>+₹5,000</b></div>
+          <div class="spill expense-pill">Expenses <b>-₹3,199</b></div>
+          <div class="spill">Balance <b style="color:var(--accent2);">₹1,801</b></div>
+        </div>
+        <div class="filter-bar">
+          <button class="fbtn active" onclick="filterTable(this,'all')">All</button>
+          <button class="fbtn" onclick="filterTable(this,'Income')">Income</button>
+          <button class="fbtn" onclick="filterTable(this,'Food &amp; Dining')">Food &amp; Dining</button>
+          <button class="fbtn" onclick="filterTable(this,'Travel')">Travel</button>
+          <button class="fbtn" onclick="filterTable(this,'Shopping')">Shopping</button>
+          <button class="fbtn" onclick="filterTable(this,'Study Materials')">Study Materials</button>
+          <button class="fbtn" onclick="filterTable(this,'Entertainment')">Entertainment</button>
+        </div>
+        <div class="txn-tbl">
+          <div class="tbl-hd"><span>Transaction</span><span>Category</span><span>Date</span><span>Method</span><span style="text-align:right;">Amount</span></div>
+          <div class="tbl-row" data-cat="Income"><b>Income from Scholarship</b><span><span class="badge b-inc">Income</span></span><span>24 Apr 2024</span><span>Bank Transfer</span><span style="text-align:right;color:var(--accent);font-weight:800;">+₹5,000</span></div>
+          <div class="tbl-row" data-cat="Food &amp; Dining"><b>Lunch at Canteen</b><span><span class="badge b-food">Food &amp; Dining</span></span><span>23 Apr 2024</span><span>UPI</span><span style="text-align:right;color:var(--danger);font-weight:800;">-₹120</span></div>
+          <div class="tbl-row" data-cat="Travel"><b>Bus Pass</b><span><span class="badge b-travel">Travel</span></span><span>22 Apr 2024</span><span>UPI</span><span style="text-align:right;color:var(--danger);font-weight:800;">-₹200</span></div>
+          <div class="tbl-row" data-cat="Study Materials"><b>Physics Textbook</b><span><span class="badge b-study">Study Materials</span></span><span>21 Apr 2024</span><span>Cash</span><span style="text-align:right;color:var(--danger);font-weight:800;">-₹300</span></div>
+          <div class="tbl-row" data-cat="Entertainment"><b>Movie with Friends</b><span><span class="badge b-ent">Entertainment</span></span><span>20 Apr 2024</span><span>Debit Card</span><span style="text-align:right;color:var(--danger);font-weight:800;">-₹250</span></div>
+          <div class="tbl-row" data-cat="Shopping"><b>Grocery Shopping</b><span><span class="badge b-shop">Shopping</span></span><span>19 Apr 2024</span><span>UPI</span><span style="text-align:right;color:var(--danger);font-weight:800;">-₹450</span></div>
+          <div class="tbl-row" data-cat="Food &amp; Dining"><b>Morning Breakfast</b><span><span class="badge b-food">Food &amp; Dining</span></span><span>18 Apr 2024</span><span>Cash</span><span style="text-align:right;color:var(--danger);font-weight:800;">-₹80</span></div>
+          <div class="tbl-row" data-cat="Travel"><b>Auto Ride</b><span><span class="badge b-travel">Travel</span></span><span>17 Apr 2024</span><span>UPI</span><span style="text-align:right;color:var(--danger);font-weight:800;">-₹60</span></div>
+          <div class="tbl-row" data-cat="Shopping"><b>T-Shirt Purchase</b><span><span class="badge b-shop">Shopping</span></span><span>15 Apr 2024</span><span>Debit Card</span><span style="text-align:right;color:var(--danger);font-weight:800;">-₹399</span></div>
+          <div class="tbl-row" data-cat="Food &amp; Dining"><b>Dinner at Restaurant</b><span><span class="badge b-food">Food &amp; Dining</span></span><span>14 Apr 2024</span><span>UPI</span><span style="text-align:right;color:var(--danger);font-weight:800;">-₹340</span></div>
+        </div>
+      </div>
+
+      <!-- ======== SET BUDGET ======== -->
+      <div id="page-budget" class="page">
+        <div class="ph"><div><div class="ph-title">Set Budget</div><div class="ph-sub">Manage your monthly spending limits per category.</div></div></div>
+        <div class="total-bud">
+          <div>
+            <div style="font-size:13px;color:var(--text2);margin-bottom:6px;">Total Monthly Budget</div>
+            <div class="bud-big" id="total-bud-disp">₹6,000</div>
+            <div style="display:flex;align-items:center;gap:12px;margin-top:14px;">
+              <input class="finp2" type="number" id="total-bud-inp" placeholder="Enter total budget" style="width:160px;" oninput="updateTotalBudget(this.value)"/>
+              <button class="btn-outline" onclick="saveBudget()">Update Budget</button>
+            </div>
+          </div>
+          <div style="flex:1;"></div>
+          <div style="text-align:right;">
+            <div style="font-size:13px;color:var(--text2);">Spent</div>
+            <div style="font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--danger);">₹3,000</div>
+            <div style="font-size:13px;color:var(--text2);margin-top:12px;">Remaining</div>
+            <div style="font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--accent);">₹3,000</div>
+          </div>
+          <canvas id="donutChart" width="130" height="130"></canvas>
+        </div>
+        <div class="bud-cats">
+          <div class="bcat"><div class="bcat-hdr"><div class="bcat-ico" style="background:rgba(0,245,160,0.12);">🍽️</div><div><div class="bcat-name">Food &amp; Dining</div><div class="bcat-lim">Limit: ₹<span id="food-lim">1500</span></div></div></div><input type="range" class="bcat-slider" min="500" max="3000" value="1500" oninput="updateLimit('food',this.value)"/><div class="bcat-vals"><span>₹500</span><span>₹3,000</span></div><div class="bud-bar" style="margin-top:8px;"><div class="bud-fill" style="width:80%;"></div></div><div class="bcat-sprow"><span class="spent-c">₹1,200 spent</span><span class="left-c">₹300 left</span></div></div>
+          <div class="bcat"><div class="bcat-hdr"><div class="bcat-ico" style="background:rgba(0,217,245,0.12);">🚌</div><div><div class="bcat-name">Travel</div><div class="bcat-lim">Limit: ₹<span id="travel-lim">800</span></div></div></div><input type="range" class="bcat-slider" min="200" max="2000" value="800" style="accent-color:var(--accent2);" oninput="updateLimit('travel',this.value)"/><div class="bcat-vals"><span>₹200</span><span>₹2,000</span></div><div class="bud-bar" style="margin-top:8px;"><div class="bud-fill" style="width:75%;background:linear-gradient(90deg,var(--accent2),#0099cc);"></div></div><div class="bcat-sprow"><span class="spent-c">₹600 spent</span><span class="left-c">₹200 left</span></div></div>
+          <div class="bcat"><div class="bcat-hdr"><div class="bcat-ico" style="background:rgba(255,179,71,0.12);">🛒</div><div><div class="bcat-name">Shopping</div><div class="bcat-lim">Limit: ₹<span id="shop-lim">600</span></div></div></div><input type="range" class="bcat-slider" min="200" max="2000" value="600" style="accent-color:var(--warn);" oninput="updateLimit('shop',this.value)"/><div class="bcat-vals"><span>₹200</span><span>₹2,000</span></div><div class="bud-bar" style="margin-top:8px;"><div class="bud-fill" style="width:75%;background:linear-gradient(90deg,var(--warn),#e67e00);"></div></div><div class="bcat-sprow"><span class="spent-c">₹450 spent</span><span class="left-c">₹150 left</span></div></div>
+          <div class="bcat"><div class="bcat-hdr"><div class="bcat-ico" style="background:rgba(124,92,252,0.12);">📚</div><div><div class="bcat-name">Study Materials</div><div class="bcat-lim">Limit: ₹<span id="study-lim">500</span></div></div></div><input type="range" class="bcat-slider" min="100" max="1500" value="500" style="accent-color:var(--accent3);" oninput="updateLimit('study',this.value)"/><div class="bcat-vals"><span>₹100</span><span>₹1,500</span></div><div class="bud-bar" style="margin-top:8px;"><div class="bud-fill" style="width:60%;background:linear-gradient(90deg,var(--accent3),#5b3fd4);"></div></div><div class="bcat-sprow"><span class="spent-c">₹300 spent</span><span class="left-c">₹200 left</span></div></div>
+          <div class="bcat"><div class="bcat-hdr"><div class="bcat-ico" style="background:rgba(255,100,200,0.12);">🎬</div><div><div class="bcat-name">Entertainment</div><div class="bcat-lim">Limit: ₹<span id="ent-lim">600</span></div></div></div><input type="range" class="bcat-slider" min="100" max="1500" value="600" style="accent-color:#ff64c8;" oninput="updateLimit('ent',this.value)"/><div class="bcat-vals"><span>₹100</span><span>₹1,500</span></div><div class="bud-bar" style="margin-top:8px;"><div class="bud-fill" style="width:75%;background:linear-gradient(90deg,#ff64c8,#cc0088);"></div></div><div class="bcat-sprow"><span class="spent-c">₹450 spent</span><span class="left-c">₹150 left</span></div></div>
+          <div class="bcat"><div class="bcat-hdr"><div class="bcat-ico" style="background:rgba(255,77,109,0.12);">💊</div><div><div class="bcat-name">Healthcare</div><div class="bcat-lim">Limit: ₹<span id="health-lim">300</span></div></div></div><input type="range" class="bcat-slider" min="100" max="1000" value="300" style="accent-color:var(--danger);" oninput="updateLimit('health',this.value)"/><div class="bcat-vals"><span>₹100</span><span>₹1,000</span></div><div class="bud-bar" style="margin-top:8px;"><div class="bud-fill" style="width:0%;background:linear-gradient(90deg,var(--danger),#cc0033);"></div></div><div class="bcat-sprow"><span class="spent-c">₹0 spent</span><span class="left-c">₹300 left</span></div></div>
+        </div>
+        <div style="display:flex;justify-content:flex-end;"><button class="btn-main" style="width:220px;">💾 Save All Budgets</button></div>
+      </div>
+
+      <!-- ======== REPORTS ======== -->
+      <div id="page-reports" class="page">
+        <div class="ph"><div><div class="ph-title">Reports</div><div class="ph-sub">Detailed analysis of your spending patterns.</div></div><div class="dpill">📅 2024 ▾</div></div>
+        <div class="month-tabs">
+          <button class="mtab" onclick="switchMonth(this)">Jan</button>
+          <button class="mtab" onclick="switchMonth(this)">Feb</button>
+          <button class="mtab" onclick="switchMonth(this)">Mar</button>
+          <button class="mtab active" onclick="switchMonth(this)">Apr</button>
+          <button class="mtab" onclick="switchMonth(this)">May</button>
+          <button class="mtab" onclick="switchMonth(this)">Jun</button>
+          <button class="mtab" onclick="switchMonth(this)">Jul</button>
+          <button class="mtab" onclick="switchMonth(this)">Aug</button>
+          <button class="mtab" onclick="switchMonth(this)">Sep</button>
+          <button class="mtab" onclick="switchMonth(this)">Oct</button>
+          <button class="mtab" onclick="switchMonth(this)">Nov</button>
+          <button class="mtab" onclick="switchMonth(this)">Dec</button>
+        </div>
+        <div class="stats-grid" style="margin-bottom:20px;">
+          <div class="scard green"><div class="scard-top"><div class="scard-ico green">📥</div></div><div class="scard-lbl">Total Income</div><div class="scard-val">₹5,000</div></div>
+          <div class="scard red"><div class="scard-top"><div class="scard-ico red">📤</div></div><div class="scard-lbl">Total Expenses</div><div class="scard-val">₹3,199</div></div>
+          <div class="scard blue"><div class="scard-top"><div class="scard-ico blue">💰</div></div><div class="scard-lbl">Net Savings</div><div class="scard-val">₹1,801</div></div>
+          <div class="scard purple"><div class="scard-top"><div class="scard-ico purple">📊</div></div><div class="scard-lbl">Savings Rate</div><div class="scard-val">36%</div></div>
+        </div>
+        <div class="two-col" style="margin-bottom:20px;">
+          <div class="gcard">
+            <div class="gcard-title">📊 Monthly Bar Chart</div>
+            <canvas id="barChart" width="400" height="200"></canvas>
+          </div>
+          <div class="gcard">
+            <div class="gcard-title">🏆 Top Spending Categories</div>
+            <div id="top-cats"></div>
+          </div>
+        </div>
+        <div class="gcard" style="margin-bottom:20px;">
+          <div class="gcard-title">📅 Weekly Spending — April 2024</div>
+          <canvas id="weeklyChart" width="800" height="140"></canvas>
+        </div>
+        <div class="gcard">
+          <div class="gcard-title">🧠 Smart Insights</div>
+          <div class="insights-row">
+            <div class="insight-box danger"><div class="ib-title">⚠️ Overspending Risk</div><div class="ib-desc">Food expenses hit 80% of limit. Consider meal prepping.</div></div>
+            <div class="insight-box success"><div class="ib-title">✅ On Track</div><div class="ib-desc">Travel spending is well within budget. Great discipline!</div></div>
+            <div class="insight-box info"><div class="ib-title">💡 Saving Tip</div><div class="ib-desc">At this rate you'll save ₹21,612 in a year!</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======== PROFILE ======== -->
+      <div id="page-profile" class="page">
+        <div class="ph"><div><div class="ph-title">Profile</div><div class="ph-sub">Manage your account and preferences.</div></div></div>
+        <div class="prof-hdr-card">
+          <div class="prof-glow"></div>
+          <div class="prof-avatar-big" id="prof-avatar">?</div>
+          <div class="prof-info">
+            <h2 class="prof-name" id="prof-name">—</h2>
+            <p class="prof-email" id="prof-email">—</p>
+            <p class="prof-college" id="prof-college">🎓 —</p>
+            <div class="prof-badges">
+              <span class="pbadge green">🏅 Smart Saver</span>
+              <span class="pbadge blue">🔥 7 Day Streak</span>
+              <span class="pbadge purple">📊 Budget Pro</span>
+            </div>
+          </div>
+          <button class="btn-outline" style="margin-left:auto;">✏️ Edit Profile</button>
+        </div>
+        <div class="prof-stats">
+          <div class="pstat"><div class="pval" style="color:var(--accent);">₹14,200</div><div class="plbl">Total Saved This Year</div></div>
+          <div class="pstat"><div class="pval" style="color:var(--accent2);">47</div><div class="plbl">Transactions Recorded</div></div>
+          <div class="pstat"><div class="pval" style="color:var(--accent3);">4 mo</div><div class="plbl">App Usage</div></div>
+          <div class="pstat"><div class="pval" style="color:var(--warn);">36%</div><div class="plbl">Avg Savings Rate</div></div>
+        </div>
+        <div class="settings-card">
+          <div class="si"><div class="si-ico">👤</div><div><div class="si-lbl">Personal Information</div><div class="si-desc">Name, email, college details</div></div><span class="si-arr">›</span></div>
+          <div class="si"><div class="si-ico">🔔</div><div><div class="si-lbl">Notifications</div><div class="si-desc">Budget alerts, daily reminders</div></div><div class="toggle-sw on"></div></div>
+          <div class="si"><div class="si-ico">💾</div><div><div class="si-lbl">Export Data</div><div class="si-desc">Download CSV / PDF report</div></div><span class="si-arr">›</span></div>
+          <div class="si"><div class="si-ico">🔒</div><div><div class="si-lbl">Security &amp; Password</div><div class="si-desc">Change password, PIN lock</div></div><span class="si-arr">›</span></div>
+          <div class="si"><div class="si-ico">🎨</div><div><div class="si-lbl">Appearance</div><div class="si-desc">Theme, currency, language</div></div><span class="si-arr">›</span></div>
+          <div class="si"><div class="si-ico">❓</div><div><div class="si-lbl">Help &amp; Support</div><div class="si-desc">FAQ, contact us</div></div><span class="si-arr">›</span></div>
+          <div class="si danger-si" onclick="logout()"><div class="si-ico" style="background:rgba(255,77,109,0.12);">🚪</div><div><div class="si-lbl" style="color:var(--danger);">Logout</div><div class="si-desc">Sign out of your account</div></div><span class="si-arr" style="color:var(--danger);">›</span></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
